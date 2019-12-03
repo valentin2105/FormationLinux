@@ -207,3 +207,22 @@ cat /dev/lkm_example
 ```
 
 
+Maintenant on va compiler le module Noyau ZFS avec DKMS afin de pouvoir créer et monter une partition ZFS. 
+
+
+```
+echo deb http://deb.debian.org/debian buster contrib >> /etc/apt/sources.list
+echo deb http://deb.debian.org/debian buster-backports main contrib >> /etc/apt/sources.list
+apt update
+
+
+apt install --yes debootstrap gdisk dkms dpkg-dev linux-headers-$(uname -r)
+apt install --yes -t buster-backports zfs-dkms
+
+modprobe zfs
+
+
+zpool create -f files /dev/sda
+
+
+```

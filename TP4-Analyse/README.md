@@ -1,13 +1,17 @@
-# TP2-Kernel
-
+# TP4-Analyse
 
 ### Objectif:
 
-> Créer, compiler et charger un module du Noyau.
-> Compiler avec DKMS le module ZFS puis formater et monter une partition ZFS
-
+> Débugguer une suite de problèmes sur notre système Debian.
 
 ### Procédure:
 
 ```
+# On lance le script d'installation qui va "Générer" des problèmes
+cd FormationLinuxNiveau2/TP4-Analyse/
+bash install.sh
+
+
+
+
 ```

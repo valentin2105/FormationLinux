@@ -1,13 +1,24 @@
-# TP2-Kernel
+# TP2-Installation
 
 
 ### Objectif:
 
-> Créer, compiler et charger un module du Noyau.
-> Compiler avec DKMS le module ZFS puis formater et monter une partition ZFS
+> Utiliser l'outil Debootstrap pour créer un système Ubuntu dans notre Debian.
 
 
 ### Procédure:
 
 ```
+apt install debootstrap
+
+mkdir ubuntu
+debootstrap --arch=amd64 bionic ubuntu/ http://ubuntu.nautile.nc/ubuntu/
+
+
+chroot ubuntu/
+
+
+apt-get update
+
+
 ```
