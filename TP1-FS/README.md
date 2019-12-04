@@ -3,7 +3,7 @@
 
 ### Objectif:
 
-> Monter un RAID avec deux disque secondaire en utilisant mdadm. Puis créer une partition LVM afin de formater et monter un volume logique en BTRFS dans notre système. 
+> Monter un RAID avec deux disques secondaires en utilisant mdadm. Puis créer une partition LVM afin de formater et monter un volume logique en BTRFS dans notre système. 
 
 
 ### Procédure:
@@ -30,10 +30,10 @@ fdisk /dev/sdc
 # On affiche le détail du RAID 
 /usr/sbin/mdadm  --detail /dev/md0
 
-# On install lvm
+# On installe lvm
 apt update && apt instal lvm2
 
-# On créer un VolumeGroup (VG)
+# On crée un VolumeGroup (VG)
 vgcreate deb /dev/md0p1
 
 # On vérifie
@@ -67,10 +67,10 @@ df -h
 btrfs filesystem show 
 ```
 
-On va ensuite détruire l'un de nos deux disque pour simuler une panne physique. 
+On va ensuite détruire l'un de nos deux disques pour simuler une panne physique. 
 
 ```
-dd if=/dev/zero of=/dev/sdc bs=1M
+shred /dev/sdc
 ```
 
 On peut constater que notre RAID est maintenant dégradé
@@ -79,11 +79,24 @@ On peut constater que notre RAID est maintenant dégradé
 
 ```
 
-On marque le disque comme défaillant 
-
+On le répare :
 ```
+# On marque le disque comme défaillant 
 mdadm --manage /dev/md0 --fail /dev/sdc1
+
+# On supprime le disque du RAID
+mdadm --manage /dev/md0 --remove /dev/sdc1
+
+# On ajoute le nouveau disque
+...
+
+# On copie la table de partition du disque valide vers le nouveau disque
+sfdisk -d /dev/sdb | sfdisk --force /dev/sdc
+
+# On ajoute le nouveau disque dans le RAID
+mdadm --add /dev/md0 /dev/sdc1
 ```
+
 
 
 
