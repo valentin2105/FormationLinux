@@ -70,20 +70,16 @@ btrfs filesystem show
 On va ensuite détruire l'un de nos deux disques pour simuler une panne physique. 
 
 ```
-shred /dev/sdc
-```
+shred /dev/sdc &
 
-On peut constater que notre RAID est maintenant dégradé
-
-```
-
-```
-
-On le répare :
-```
 # On marque le disque comme défaillant 
 mdadm --manage /dev/md0 --fail /dev/sdc1
 
+cat /proc/mdstat
+```
+
+On peut maintenant simuler qu'on change le disque et qu'on l'ajoute dans le disque
+```
 # On supprime le disque du RAID
 mdadm --manage /dev/md0 --remove /dev/sdc1
 
@@ -95,5 +91,8 @@ sfdisk -d /dev/sdb | sfdisk --force /dev/sdc
 
 # On ajoute le nouveau disque dans le RAID
 mdadm --add /dev/md0 /dev/sdc1
+
+/usr/sbin/mdadm  --detail /dev/md0
+cat /proc/mdstat
 ```
 
