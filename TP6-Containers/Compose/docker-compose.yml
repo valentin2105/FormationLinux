@@ -1,0 +1,34 @@
+version: '3.3'
+
+services:
+   db:
+     image: docker.ntl.nc/mysql:5.7
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: somewordpress
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: wordpress
+       MYSQL_PASSWORD: PassW0rD
+
+   wordpress:
+     ports:
+       - "80:80"
+     depends_on:
+       - db
+     volumes:
+       - wp_data:/var/www/html/wp-content
+     image: docker.ntl.nc/wordpress:latest
+     restart: always
+     environment:
+       WORDPRESS_DB_HOST: db:3306
+       WORDPRESS_DB_USER: wordpress
+       WORDPRESS_DB_PASSWORD: PassW0rD
+       WORDPRESS_DB_NAME: wordpress
+
+volumes:
+    db_data: {}
+    wp_data: {}
+    portainer_data: {}
+

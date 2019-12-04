@@ -32,17 +32,17 @@ fd > Type Linux RAID
 p > montre les partitions
 w > écrit les infos sur le disque
 
-# On va formater en type RAID le disque /dev/sdb
-fdisk /dev/sdc
+# On va formater en type RAID le disque /dev/sdb avec cfdisk
+cfdisk /dev/sdc
 
-# On initialise le RAID
-/usr/sbin/mdadm  --create /dev/md0 --level=mirror --raid-devices=2 /dev/sdb1 /dev/sdc1
+# On initialise le RAID avec mdadm
+mdadm  --create /dev/md0 --level=mirror --raid-devices=2 /dev/sdb1 /dev/sdc1
 
 # On affiche le détail du RAID 
-/usr/sbin/mdadm  --detail /dev/md0
+mdadm  --detail /dev/md0
 
 # On installe lvm
-apt update && apt instal lvm2
+apt update && apt install lvm2
 
 # On crée un VolumeGroup (VG)
 vgcreate deb /dev/md0p1
@@ -89,7 +89,7 @@ mdadm --manage /dev/md0 --fail /dev/sdc1
 cat /proc/mdstat
 ```
 
-On peut maintenant simuler qu'on change le disque et qu'on l'ajoute dans le disque
+On peut maintenant simuler qu'on change le disque et qu'on l'ajoute dans le RAID
 ```
 # On supprime le disque du RAID
 mdadm --manage /dev/md0 --remove /dev/sdc1
