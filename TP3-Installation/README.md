@@ -32,10 +32,10 @@ echo "Hello World" > ubuntu/var/www/html/index.html
 
 curl localhost
 
-chroot ubuntu/ /etc/init.d/apache2/status
+chroot ubuntu/ /etc/init.d/apache2 status
 
 
 # On nettoie
-chroot ubuntu/ /etc/init.d/apache2/stop
+chroot ubuntu/ /etc/init.d/apache2 stop
 rm -rf ubuntu/
 ```
