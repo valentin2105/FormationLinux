@@ -1,5 +1,3 @@
-
-
 usermod -a -G sudo formation
 
 export LANGUAGE=en_US.UTF-8

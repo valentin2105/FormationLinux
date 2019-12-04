@@ -17,6 +17,4 @@ apt-get install -y rsnapshot rsync monit curl
 # On install et compile Netdata depuis leur site. 
 bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh)
 service netdata status
-
-
 ```

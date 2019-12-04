@@ -21,6 +21,17 @@ lsblk -o NAME,SIZE,FSTYPE,TYPE,MOUNTPOINT
 # On va formater en type RAID le disque /dev/sdb
 fdisk /dev/sdb
 
+n > nouvelle partition
+p > primary
+1 
+ENTER
+ENTER
+p > montre les partitions
+t > change le type
+fd > Type Linux RAID
+p > montre les partitions
+w > écrit les infos sur le disque
+
 # On va formater en type RAID le disque /dev/sdb
 fdisk /dev/sdc
 
@@ -70,7 +81,7 @@ btrfs filesystem show
 On va ensuite détruire l'un de nos deux disques pour simuler une panne physique. 
 
 ```
-shred /dev/sdc &
+shred /dev/sdc ... CTRL+C
 
 # On marque le disque comme défaillant 
 mdadm --manage /dev/md0 --fail /dev/sdc1

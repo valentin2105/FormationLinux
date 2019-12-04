@@ -11,7 +11,6 @@
 cd FormationLinuxNiveau2/TP4-Analyse/
 bash install.sh
 
-
-
-
+# Le script va créer plusieurs problème dans notre système Debian,
+# Nous allons devoir les corriger. 
 ```
