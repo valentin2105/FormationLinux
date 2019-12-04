@@ -4,7 +4,7 @@
 #include <linux/fs.h>
 #include <asm/uaccess.h>
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Robert W. Oliver II");
+MODULE_AUTHOR("Linux Formation niv2");
 MODULE_DESCRIPTION("A simple example Linux module.");
 MODULE_VERSION("0.01");
 #define DEVICE_NAME "lkm_example"

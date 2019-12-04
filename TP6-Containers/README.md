@@ -10,6 +10,7 @@
 ### Procédure:
 
 ```
+# On va commencer par installer Docker
 apt-get install apt-transport-https ca-certificates gnupg2 software-properties-common
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 
@@ -19,7 +20,20 @@ apt-get update && apt-get install docker-ce docker-ce-cli containerd.io
 
 service docker start
 
-docker ps
 
+# On vérifie le bon fonctionnement 
+docker ps
 docker run hello-world
+
+# On va builder notre première image
+cd TP6-Containers/PyApp
+
+# Pour cela, on va déjà la lancer sur notre machine, on installe les dépendances
+apt-get install -y python3 python3-pip
+pip3 install flask jsonify
+
+# On peut maintenant lancer notre code Python
+python3 app.py
 ```
+
+

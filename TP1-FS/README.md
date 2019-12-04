@@ -97,7 +97,3 @@ sfdisk -d /dev/sdb | sfdisk --force /dev/sdc
 mdadm --add /dev/md0 /dev/sdc1
 ```
 
-
-
-
-
