@@ -3,7 +3,7 @@
 ### Objectif:
 
 > Créer, compiler et charger un module du Noyau.
-> Compiler avec DKMS le module ZFS puis formater et monter une partition ZFS
+> Créer un paquet Debian DKMS un module Intel pour carte réseau non présent dans le Noyau.
 
 ### Procédure:
 
@@ -50,18 +50,39 @@ rmmod lkm2
 ```
 
 
-Maintenant on va compiler le module Noyau ZFS avec DKMS afin de pouvoir créer et monter une partition ZFS. 
+Maintenant on va réaliser un cas concret,
+
+Installer un module du Noyau pour un pilote de Carte réseau Intel XXV710-DA2 (i40e).
+
+Pour cela nous allons réaliser un paquet Debian (.deb) qui va empacter le module i40e et le compiler grâce à DKMS.
 
 
 ```
-echo deb http://deb.debian.org/debian buster contrib >> /etc/apt/sources.list
-echo deb http://deb.debian.org/debian buster-backports main contrib >> /etc/apt/sources.list
-apt update
+cd TP2-Kernel/ModuleDKMS
 
-apt install --yes debootstrap gdisk dkms dpkg-dev linux-headers-$(uname -r)
-apt install --yes -t buster-backports zfs-dkms
+# On décompresse les sources du pilote
+tar -zxvf i40e-2.10.19.30.tar.gz
 
-modprobe zfs
+# On déplace la définition de notre paquet dans le dossier du pilote
+mv debian/ i40e-2.10.19.30/
+cd i40e-2.10.19.30/
 
-zpool create -f files /dev/sda
+
+# On installe les dépendances nécéssaires à la construction du paquet
+apt update && apt install -y build-essential fakeroot debhelper
+
+
+# On peut maintenant builder notre paquet .deb
+ dpkg-buildpackage --no-sign
+
+
+# On peut maintenant l'installer 
+cd ../
+dpkg -i i40e-dkms_2.4.6-0_all.deb
+
+# On liste les modules DKMS
+dkms status
+
+# On inspecte notre pilote
+modinfo i40e
 ```
