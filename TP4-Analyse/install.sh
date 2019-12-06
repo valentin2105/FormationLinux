@@ -1,7 +1,6 @@
 #!/bin/bash
 
 apt-get update && apt-get install -y apache2
-
 # Changer le port apache vers 81
 sed -i 's/Listen 80/Listen 81/g' /etc/apache2/ports.conf 
 service apache2 restart
@@ -21,5 +20,3 @@ iptables -A INPUT -p tcp --dport http -j REJECT
 
 # On désactive apache au boot.
 systemctl disable apache2
-
-
