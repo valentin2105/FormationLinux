@@ -9,9 +9,11 @@
 
 ### Procédure:
 
+Monitoring / Supervision
+
 ```
 # On install les paquets depuis APT
-apt-get install -y rsnapshot rsync monit curl
+apt-get install -y rsync monit curl
 
 
 # On installe Netdata depuis leur site. 
@@ -42,7 +44,19 @@ service monit restart
 monit summary
 monit status
 
+# On active maintenant nos nouveaux services au démarrage
+systemctl enable monit
+systemctl enable netdata
+
+
+```
+
+Backup incrémental
+
+```
+apt-get update && apt-get install rsnapshot
 
 # La configuration de rsnapshot se fait dans /etc/rsnapshot.conf
+
 > Mettre en place le backup de notre répertoire /var/www/html dans /mnt/lvbtrfs
 ```
