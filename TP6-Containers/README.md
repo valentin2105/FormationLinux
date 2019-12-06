@@ -28,7 +28,7 @@ docker run hello-world
 # On va builder notre première image
 cd TP6-Containers/PyApp
 
-# Pour cela, on va déjà la lancer sur notre machine, on installe les dépendances
+# Pour cela, on va déjà lancer l'application Python sur notre machine, pour cela, on installe les dépendances
 apt-get install -y python3 python3-pip
 pip3 install flask jsonify
 
@@ -36,7 +36,7 @@ pip3 install flask jsonify
 python3 app.py
 
 
-# Maintenant que notre application fonctionne normalement sur notre machine, on peut commencer à créer son Manifest pour pouvoir construire l'image de notre application.
+# Maintenant que notre application fonctionne normalement sur notre machine, on peut commencer à créer son Manifeste pour pouvoir construire l'image de notre application.
 
 > Pour cela nous allons créer un Dockerfile
 ...
