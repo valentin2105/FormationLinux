@@ -51,7 +51,7 @@ vgcreate deb /dev/md0p1
 vgdisplay
 
 # On créer un LogicalVolume (LV) pour accueillir notre partition BTRFS
-lvcreate -L 1G  deb -n lvbrt
+lvcreate -L 1G  deb -n lvbtrfs
 
 # On vérifie
 lvs
@@ -59,16 +59,16 @@ lvs
 # On install les outils BTRFS
 apt install btrfs-tools 
 
-# On formate notre LV (lvbrt) 
-mkfs.btrfs /dev/mapper/deb-lvbrt
+# On formate notre LV (lvbtrfs) 
+mkfs.btrfs /dev/mapper/deb-lvbtrfs
 
 # On créer le point de montage
-mkdir -p /mnt/lvbrt
+mkdir -p /mnt/lvbtrfs
 
 # On édite le fichier fstab de montage des partitions
 vim /etc/fstab
  
-/dev/deb/lvbrt  /mnt/lvbrt      btrfs      rw,noatime,ssd,discard,autodefrag      0      2
+/dev/deb/lvbtrfs  /mnt/lvbtrfs      btrfs      rw,noatime,ssd,discard,autodefrag      0      2
 
 # On monte notre partition
 mount -a

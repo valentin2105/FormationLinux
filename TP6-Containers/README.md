@@ -34,6 +34,12 @@ pip3 install flask jsonify
 
 # On peut maintenant lancer notre code Python
 python3 app.py
+
+
+# Maintenant que notre application fonctionne normalement sur notre machine, on peut commencer à créer son Manifest pour pouvoir construire l'image de notre application.
+
+> Pour cela nous allons créer un Dockerfile
+...
 ```
 
 
