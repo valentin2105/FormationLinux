@@ -3,7 +3,7 @@
 
 ### Objectif:
 
-> Monter un RAID avec deux disques secondaires en utilisant mdadm. Puis créer une partition LVM afin de formater et monter un volume logique en BTRFS dans notre système. 
+> Monter un RAID 1 avec deux disques secondaires en utilisant mdadm. Puis créer une partition LVM afin de formater et monter un volume logique en BTRFS dans notre système. 
 
 
 ### Procédure:
@@ -44,13 +44,16 @@ mdadm  --detail /dev/md0
 # On installe lvm
 apt update && apt install lvm2
 
+# On crée un PhysicalVolume (PV)
+vgcreate deb /dev/md0
+
 # On crée un VolumeGroup (VG)
-vgcreate deb /dev/md0p1
+vgcreate deb /dev/md0
 
 # On vérifie
 vgdisplay
 
-# On créer un LogicalVolume (LV) pour accueillir notre partition BTRFS
+# On créé un LogicalVolume (LV) pour accueillir notre partition BTRFS
 lvcreate -L 1G  deb -n lvbtrfs
 
 # On vérifie
@@ -62,7 +65,7 @@ apt install btrfs-tools
 # On formate notre LV (lvbtrfs) 
 mkfs.btrfs /dev/mapper/deb-lvbtrfs
 
-# On créer le point de montage
+# On créé le point de montage
 mkdir -p /mnt/lvbtrfs
 
 # On édite le fichier fstab de montage des partitions

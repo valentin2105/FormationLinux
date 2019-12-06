@@ -35,7 +35,7 @@ curl localhost
 echo "Hello World" > ubuntu/var/www/html/index.html
 
 
-# On vérifie que le serveur sert bien les fichier de notre chroot
+# On vérifie que le serveur sert bien les fichiers de notre chroot
 curl localhost
 
 # On peut lancer des commandes directement dans le chroot comme ceci
