@@ -5,7 +5,8 @@
 
 
 > Installer et utiliser Docker
-> Créer notre première image Docker pour une application en Python puis la déployer sur un registre Privé. 
+
+> Créer notre première image pour une application Python puis la déployer sur un registre Privé. 
 
 ### Procédure:
 
@@ -28,7 +29,7 @@ docker run hello-world
 # On va builder notre première image
 cd TP6-Containers/PyApp
 
-# Pour cela, on va déjà lancer l'application Python sur notre machine, pour cela, on installe les dépendances
+# On va déjà lancer l'application Python sur notre machine, pour cela, on installe les dépendances 
 apt-get install -y python3 python3-pip
 pip3 install flask jsonify
 
@@ -36,10 +37,24 @@ pip3 install flask jsonify
 python3 app.py
 
 
-# Maintenant que notre application fonctionne normalement sur notre machine, on peut commencer à créer son Manifeste pour pouvoir construire l'image de notre application.
-
-> Pour cela nous allons créer un Dockerfile
+# Maintenant que notre application fonctionne normalement sur notre machine,
+# on peut commencer à créer son manifeste (Dockerfile) pour pouvoir construire 
+# l'image de notre application.
 ...
 ```
 
+Registre privé
 
+```
+$ docker run -d  \
+  -p 5000:5000 \
+  --restart=always \
+  --name registry \
+  -v /mnt/registry:/var/lib/registry \
+  registry:2
+
+
+$ docker tag MY_IMAGE localhost:5000/my-image
+
+$ docker push localhost:5000/my-image
+```
