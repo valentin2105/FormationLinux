@@ -15,4 +15,4 @@ sudo bash install.sh
 ```
 >Le but de l'exercice de faire fonctionner le serveur web hébergeant "L'application de formation v2" pour qu'il réponde  sur l'IP externe de machine port 80. 
 
-
+Utilisez les outils d'analyse étudiés précédemment. 

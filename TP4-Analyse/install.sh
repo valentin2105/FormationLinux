@@ -18,5 +18,10 @@ chmod 400 /var/www/html/index.html
 # Firewall close port 80
 iptables -A INPUT -p tcp --dport http -j REJECT
 
+
+# On lance un process qui va staturer le cpu
+yes > /dev/null &
+yes > /dev/null &
+
 # On désactive apache au boot.
 systemctl disable apache2
