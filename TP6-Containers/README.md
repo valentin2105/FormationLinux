@@ -67,3 +67,10 @@ $ docker run -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docke
 $ docker volume create portainer_data
 ```
 
+Docker-compose > Wordpress
+
+```
+cd ../Compose
+pip3 install docker-compose
+docker-compose up 
+```
