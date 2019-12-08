@@ -6,7 +6,7 @@
 
 > Installer et utiliser Docker
 
-> Créer notre première image pour une application Python puis la déployer sur un registre Privé. 
+> Créer notre première image pour une application Python puis la déployer sur un registre privé. 
 
 ### Procédure:
 
@@ -58,3 +58,12 @@ $ docker tag MY_IMAGE localhost:5000/my-image
 
 $ docker push localhost:5000/my-image
 ```
+
+Portainer 
+
+```
+$ docker volume create portainer_data
+$ docker run -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+```
+$ docker volume create portainer_data
+

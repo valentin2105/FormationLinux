@@ -3,8 +3,9 @@
 
 ### Objectif:
 
-> Installer une système de Supervision sur notre serveur, Netdata pour les métriques et Monit pour les services.
-> Configurer un système de backup incrémental sur notre serveur avec Rsnapshot. 
+> Installer une système de supervision sur notre serveur, Netdata pour les métriques et Monit pour les services.
+
+> Configurer un système de backup incrémental sur notre serveur avec Rsnapshot sur le RAID précédemment configuré.
 
 
 ### Procédure:
@@ -47,11 +48,9 @@ monit status
 # On active maintenant nos nouveaux services au démarrage
 systemctl enable monit
 systemctl enable netdata
-
-
 ```
 
-Backup incrémental
+Backup incrémental (rsnapshot)
 
 ```
 apt-get update && apt-get install rsnapshot
