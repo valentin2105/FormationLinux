@@ -45,7 +45,7 @@ mdadm  --detail /dev/md0
 apt update && apt install lvm2
 
 # On crée un PhysicalVolume (PV)
-vgcreate deb /dev/md0
+pvcreate /dev/md0
 
 # On crée un VolumeGroup (VG)
 vgcreate deb /dev/md0
