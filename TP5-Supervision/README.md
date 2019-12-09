@@ -13,9 +13,11 @@
 Monitoring / Supervision
 
 ```
+echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" > /etc/apt/sources.list.d/backport.conf
+apt-get update
+
 # On install les paquets depuis APT
 apt-get install -y rsync monit curl
-
 
 # On installe Netdata depuis leur site. 
 bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh)
