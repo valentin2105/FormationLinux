@@ -69,7 +69,7 @@ cd i40e-2.10.19.30/
 
 
 # On installe les dépendances nécéssaires à la construction du paquet
-apt update && apt install -y build-essential fakeroot debhelper
+apt update && apt install -y build-essential fakeroot debhelper dkms
 
 
 # On peut maintenant builder notre paquet .deb
