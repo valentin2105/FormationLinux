@@ -13,7 +13,7 @@
 Monitoring / Supervision
 
 ```
-echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" > /etc/apt/sources.list.d/backport.conf
+echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" > /etc/apt/sources.list.d/backport.list
 apt-get update
 
 # On install les paquets depuis APT
