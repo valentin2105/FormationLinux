@@ -58,4 +58,9 @@ apt-get update && apt-get install rsnapshot
 # La configuration de rsnapshot se fait dans /etc/rsnapshot.conf
 
 > Mettre en place le backup de notre répertoire /var/www/html dans /mnt/lvbtrfs
+
+# On télécharge restic
+cd /opt && wget https://github.com/restic/restic/releases/download/v0.9.6/restic_0.9.6_linux_amd64.bz2
+
+
 ```
