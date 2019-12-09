@@ -1,4 +1,4 @@
-# TP6-Containers
+# TP7-Containers
 
 
 ### Objectif:
@@ -27,7 +27,7 @@ docker ps
 docker run hello-world
 
 # On va builder notre première image
-cd TP6-Containers/PyApp
+cd TP7-Containers/PyApp
 
 # On va déjà lancer l'application Python sur notre machine, pour cela, on installe les dépendances 
 apt-get install -y python3 python3-pip
