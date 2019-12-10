@@ -26,6 +26,13 @@ service docker start
 docker ps
 docker run hello-world
 
+
+# On va lancer notre vrai premier container
+docker run -it docker.ntl.nc/debian:buster bash
+
+```
+### PyApp
+```
 # On va builder notre première image
 cd TP7-Containers/PyApp
 
