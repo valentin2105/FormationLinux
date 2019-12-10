@@ -8,6 +8,10 @@
 
 > Créer notre première image pour une application Python puis la déployer sur un registre privé. 
 
+> Installer Portainer pour gérer nos containers
+
+> Utiliser Docker-compose pour déployer une stack Wordpress
+
 ### Procédure:
 
 ```
