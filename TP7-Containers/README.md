@@ -50,7 +50,7 @@ python3 app.py
 ...
 ```
 
-Registre privé
+## Registre privé
 
 ```
 $ docker run -d  \
@@ -66,7 +66,7 @@ $ docker tag MY_IMAGE localhost:5000/my-image
 $ docker push localhost:5000/my-image
 ```
 
-Portainer 
+## Portainer 
 
 ```
 $ docker volume create portainer_data
@@ -74,7 +74,7 @@ $ docker run -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docke
 $ docker volume create portainer_data
 ```
 
-Docker-compose > Wordpress
+## Docker-compose - Wordpress
 
 ```
 cd ../Compose
