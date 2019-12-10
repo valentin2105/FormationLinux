@@ -66,3 +66,29 @@ cd /opt && wget https://github.com/restic/restic/releases/download/v0.9.6/restic
 
 
 ```
+
+Backup chiffré (restic)
+
+```
+# On télécharge restic
+cd /opt && wget https://github.com/restic/restic/releases/download/v0.9.6/restic_0.9.6_linux_amd64.bz2
+
+# On décompresse
+bzip2 -d restic_0.9.6_linux_amd64.bz2
+
+chmod +x restic_0.9.6_linux_amd64
+mv restic_0.9.6_linux_amd64 /usr/local/bin/restic
+
+# On initialise le dépôt
+restic init --repo /mnt/lvbtrfs/backup/restic
+enter password for new repository: PASSWORDCHIFFREMENT
+enter password again: PASSWORDCHIFFREMENT
+
+
+# On backup le dossier /root
+restic backup /root --repo /mnt/lvbtrfs/backup/restic/
+
+
+# On liste les backups
+restic snapshots --repo /mnt/lvbtrfs/backup/restic/
+```
