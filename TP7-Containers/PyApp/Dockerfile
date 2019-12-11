@@ -1,8 +1,8 @@
-FROM docker.ntl.nc/debian:buster
+FROM docker.ntl.nc/alpine:latest
 
-RUN apt-get update && \
-    apt-get install -y python3 python3-pip && \
-    rm -rf /var/lib/apt/lists/* 
+RUN apk update && \
+    apk add python3 && \
+    pip3 install --upgrade pip
 
 RUN pip3 install flask jsonify
 
