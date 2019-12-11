@@ -86,6 +86,9 @@ wget -q -O - https://raw.githubusercontent.com/rancher/k3d/master/install.sh | b
 k3d create --name dev --api-port 6551 --publish 8081:80
 
 
+sudo snap install kubectl --classic
+
+
 ------------- Ne pas faire en desosus 
 curl -sfL https://get.k3s.io | sh -
         
