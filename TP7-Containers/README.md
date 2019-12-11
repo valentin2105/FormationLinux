@@ -80,6 +80,13 @@ $ docker run -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docke
 ## k3s
 
 ```
+
+wget -q -O - https://raw.githubusercontent.com/rancher/k3d/master/install.sh | bash
+#Create your first cluster:
+k3d create --name dev --api-port 6551 --publish 8081:80
+
+
+------------- Ne pas faire en desosus 
 curl -sfL https://get.k3s.io | sh -
         
 # Wait 30s
