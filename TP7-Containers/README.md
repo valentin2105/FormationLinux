@@ -62,7 +62,7 @@ $ docker run -d  \
   --restart=always \
   --name registry \
   -v /mnt/registry:/var/lib/registry \
-  registry:2
+  docker.ntl.nc/registry
 
 
 $ docker tag MY_IMAGE localhost:5000/my-image
