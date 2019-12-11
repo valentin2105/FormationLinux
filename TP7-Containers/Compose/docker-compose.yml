@@ -1,6 +1,13 @@
 version: '3.3'
 
 services:
+   nginx-proxy:
+     image: docker.ntl.nc/nginx-proxy:latest
+     volumes:
+       -  /var/run/docker.sock:/tmp/docker.sock:ro
+     ports:
+       - "80:80"
+
    db:
      image: docker.ntl.nc/mysql:5.7
      volumes:
@@ -13,8 +20,6 @@ services:
        MYSQL_PASSWORD: PassW0rD
 
    wordpress:
-     ports:
-       - "80:80"
      depends_on:
        - db
      volumes:
@@ -26,6 +31,14 @@ services:
        WORDPRESS_DB_USER: wordpress
        WORDPRESS_DB_PASSWORD: PassW0rD
        WORDPRESS_DB_NAME: wordpress
+       VIRTUAL_HOST: wordpress.nc
+
+   pyapp:
+     image: pyapp:v2
+     restart: always
+     environment:
+       VIRTUAL_HOST: pyapp.nc
+       VIRTUAL_PORT: 5000
 
 volumes:
     db_data: {}
