@@ -57,9 +57,7 @@ services:
        - frontend
 
 networks:
-    frontend:
-      external:
-        name: frontend
+    frontend: {}
     backend: {}
 
 volumes:
