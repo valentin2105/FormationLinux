@@ -16,7 +16,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: nginx
+      - image: docker.ntl.nc/nginx:latest
         name: nginx
         ports:
         - containerPort: 80
