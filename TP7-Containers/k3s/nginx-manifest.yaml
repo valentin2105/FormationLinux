@@ -44,10 +44,10 @@ metadata:
     ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-  - http:
+  - host: nginx.nc
+    http:
       paths:
       - path: /
         backend:
           serviceName: nginx
           servicePort: 80
-
