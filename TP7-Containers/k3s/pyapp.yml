@@ -4,6 +4,7 @@ kind: Deployment
 metadata:
   labels:
     app: pyapp
+    version: v1
   name: pyapp
 spec:
   replicas: 3
@@ -15,6 +16,7 @@ spec:
     metadata:
       labels:
         app: pyapp
+        version: v1
     spec:
       containers:
       - image: docker.ntl.nc/pyapp:v1
