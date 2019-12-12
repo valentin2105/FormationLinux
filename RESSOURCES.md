@@ -16,5 +16,4 @@ https://github.com/jwilder/nginx-proxy
 https://www.katacoda.com/courses/docker
 
 ## Kubernetes
-
 https://www.gekko.fr/kubernetes-les-ressources-part-1%E2%80%AF-les-bases/
