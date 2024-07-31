@@ -1,4 +1,4 @@
-# Formation Linux Niveau 2
+# Formation Linux
 
 ### Travaux pratiques
 
