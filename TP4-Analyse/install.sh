@@ -8,7 +8,7 @@ service apache2 restart
 # Install et démarre Nginx
 apt-get install -y nginx
 sed -i 's/index index.html index.htm index.nginx-debian.html/index index.nginx-debian.html/g' /etc/nginx/sites-enabled/default
-echo "Mon application de Formation v2." > /var/www/html/index.html
+echo "Mon application de Formation." > /var/www/html/index.html
 echo "Hello World from apache2 on Debian." > /var/www/html/index.nginx-debian.html 
 service nginx restart
 

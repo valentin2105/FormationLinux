@@ -2,7 +2,7 @@
 
 ### Objectif:
 
-> Installer X11 et i3 WM, ainsi que tmux, zsh et d'autre outils pour votre système graphque. 
+> Installer X11 et i3 WM, ainsi que tmux, zsh et d'autre outils pour votre système graphique. 
 
 ### Procédure:
 

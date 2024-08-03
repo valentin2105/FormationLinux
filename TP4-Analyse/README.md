@@ -8,7 +8,7 @@
 
 ```
 # On lance le script d'installation qui va "Générer" des problèmes
-cd FormationLinuxNiveau2/TP4-Analyse/
+cd FormationLinux/TP4-Analyse/
 sudo bash install.sh
 
 # Le script va créer plusieurs problème dans notre système Debian
