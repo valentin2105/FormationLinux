@@ -14,7 +14,7 @@ apt install debootstrap
 
 # On lance debootstrap dans un dossier ubuntu/ en demandant la version "Bionic"
 mkdir ubuntu
-debootstrap --arch=amd64 bionic ubuntu/ http://ubuntu.nautile.nc/ubuntu/
+debootstrap --arch=amd64 bionic noble/ http://ubuntu.nautile.nc/ubuntu/
 
 
 # On se chroot dans notre nouveau Ubuntu (change root)
