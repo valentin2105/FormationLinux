@@ -32,12 +32,12 @@ allow admin:monit
 monit summary
 monit status
 
-# On peut créer le fichier /etc/monit/conf.d/apache2.conf
+# On peut créer le fichier /etc/monit/conf.d/nginx.conf
 
-check process apache2 with pidfile /run/apache2/apache2.pid
-    start program = "/bin/systemctl start apache2.service" with timeout 15 seconds
-    stop program  = "/bin/systemctl stop apache2.service"
-    restart program = "/bin/systemctl restart apache2.service"
+check process nginx with pidfile /var/run/nginx.pid
+    start program = "/bin/systemctl start nginx.service" with timeout 15 seconds
+    stop program  = "/bin/systemctl stop nginx.service"
+    restart program = "/bin/systemctl restart nginx.service"
 
 # Et relancer Monit
 service monit restart
@@ -58,7 +58,9 @@ apt-get update && apt-get install rsnapshot
 
 # La configuration de rsnapshot se fait dans /etc/rsnapshot.conf
 
-> Mettre en place le backup de notre répertoire /var/www/html dans /mnt/lvbtrfs
+mkdir -p /srv/datas/backups
+
+> Mettre en place le backup de notre répertoire /var/www/html dans /srv/datas/backups
 
 
 ```
@@ -70,21 +72,21 @@ Backup chiffré (restic)
 cd /opt && wget https://github.com/restic/restic/releases/download/v0.17.0/restic_0.17.0_linux_amd64.bz2
 
 # On décompresse
-bzip2 -d restic_0.9.6_linux_amd64.bz2
+bzip2 -d restic_0.17.0_linux_amd64.bz2
 
-chmod +x restic_0.9.6_linux_amd64
-mv restic_0.9.6_linux_amd64 /usr/local/bin/restic
+chmod +x restic_0.17.0_linux_amd64
+mv restic_0.17.0_linux_amd64 /usr/local/bin/restic
 
 # On initialise le dépôt
-restic init --repo /mnt/lvbtrfs/backup/restic
+restic init --repo /srv/datas/backups/restic
 enter password for new repository: PASSWORDCHIFFREMENT
 enter password again: PASSWORDCHIFFREMENT
 
 
 # On backup le dossier /root
-restic backup /root --repo /mnt/lvbtrfs/backup/restic/
+restic backup /root --repo /srv/datas/backups/restic/
 
 
 # On liste les backups
-restic snapshots --repo /mnt/lvbtrfs/backup/restic/
+restic snapshots --repo /srv/datas/backups/restic/
 ```
