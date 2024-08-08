@@ -2,6 +2,17 @@ version: '3.3'
 
 services:
 
+#### Nginx proxy
+  nginx-proxy:
+    image: nginxproxy/nginx-proxy:1.6
+    volumes:
+      -  /var/run/docker.sock:/tmp/docker.sock:ro
+    ports:
+      - "80:80"
+    networks:
+      - frontend
+
+#### Wordpress
   db:
     image: mariadb:latest
     volumes:
@@ -12,6 +23,8 @@ services:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: PassW0rD
+    networks:
+      - backend
 
   wordpress:
     depends_on:
@@ -25,6 +38,27 @@ services:
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: PassW0rD
       WORDPRESS_DB_NAME: wordpress
+      VIRTUAL_HOST: wordpress.nc
+    networks:
+      - frontend
+      - backend
+
+
+#### PyApp
+  pyapp:
+    image: hello:latest
+    restart: always
+    volumes:
+      - ./hello.py:/hello.py
+    environment:
+      VIRTUAL_HOST: pyapp.nc
+      VIRTUAL_PORT: 5000
+    networks:
+      - frontend
+
+networks:
+  frontend: {}
+  backend: {}
 
 volumes:
   db_data: {}

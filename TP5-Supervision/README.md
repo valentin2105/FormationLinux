@@ -19,12 +19,13 @@ apt-get update
 apt-get install -y rsync monit curl
 
 # On installe Netdata depuis leur site. 
-bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh)
+curl https://get.netdata.cloud/kickstart.sh > /tmp/netdata-kickstart.sh && sh /tmp/netdata-kickstart.sh
 service netdata status
 
 # On configure Monit
-vim /etc/monit/monit.conf
+nano /etc/monit/monitrc
 
+# On met cela à la fin du fichier
 set httpd port 2812
 allow admin:monit
 
