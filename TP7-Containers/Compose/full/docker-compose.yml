@@ -1,5 +1,3 @@
-version: '3.3'
-
 services:
 
 #### Nginx proxy
@@ -49,7 +47,7 @@ services:
     image: hello:latest
     restart: always
     volumes:
-      - ./hello.py:/hello.py
+      - ./hello.py:/app/hello.py
     environment:
       VIRTUAL_HOST: pyapp.nc
       VIRTUAL_PORT: 5000

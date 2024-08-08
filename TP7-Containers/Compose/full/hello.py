@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def main():
-    hello_text = "Hello Formation Linux"
+    hello_text = "Hello Formation Linux !!"
     return jsonify(hello_text)
      
 app.run(host='0.0.0.0', port=5000, debug=True)
